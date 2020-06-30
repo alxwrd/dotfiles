@@ -1,0 +1,15 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/repos
+    - ~/downloads
+
+
+- link:
+    .bashrc: dots/bashrc
+
