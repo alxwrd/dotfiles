@@ -56,8 +56,8 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 if [ "$color_prompt" = yes ]; then
@@ -110,9 +110,12 @@ fi
 
 
 login_text() {
-    if curl -s -I wttr.in > /dev/null 2>&1; then
-        echo $(curl -s wttr.in/Nottingham?format=4);
+    if ping -w 1 wttr.in > /dev/null 2>&1; then
+        echo "$(curl -s wttr.in/Nottingham?format=4)"
     fi
+    echo ""
+    echo "✅ TODO LIST"
+    echo "$(todo.sh ls)"
     echo ""
 }
 

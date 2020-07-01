@@ -11,6 +11,6 @@
 
 
 - link:
-    .bashrc: dots/bashrc
+    ~/.bashrc: dots/bashrc
     ~/.profile: dots/profile
 
